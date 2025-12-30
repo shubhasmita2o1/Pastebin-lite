@@ -641,6 +641,10 @@ export default function HomePage() {
         color: "#fff",
       }}
     >
+      <h2 style={{ color: "red", textAlign: "center" }}>
+  DEPLOY TEST – SHOULD BE RED
+</h2>
+
       <h1 style={{ marginBottom: "1rem" }}>Pastebin Lite</h1>
 
       {/* FORM */}
