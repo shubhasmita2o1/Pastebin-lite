@@ -1,26 +1,32 @@
 import { notFound } from "next/navigation";
+import { pool } from "@/lib/db";
 
 export default async function PastePage({ params }) {
   const { id } = params;
 
-  const baseUrl =
-    process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
-      : "http://localhost:3000";
+  const result = await pool.query(
+    `
+    SELECT content, created_at
+    FROM pastes
+    WHERE id = $1
+    `,
+    [id]
+  );
 
-  const res = await fetch(`${baseUrl}/api/pastes/${id}`, {
-    cache: "no-store",
-  });
-
-  if (!res.ok) {
+  if (result.rows.length === 0) {
     notFound();
   }
 
-  const paste = await res.json();
+  const paste = result.rows[0];
 
   return (
     <main style={{ padding: "2rem" }}>
       <h1>Paste</h1>
+
+      <p style={{ color: "#888" }}>
+        Created at: {new Date(paste.created_at).toLocaleString()}
+      </p>
+
       <pre
         style={{
           background: "#111",
