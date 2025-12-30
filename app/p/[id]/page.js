@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 
 export default async function PastePage({ params }) {
-  const { id } = await params;
+  const { id } = params;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/api/pastes/${id}`,
-    { cache: "no-store" }
-  );
+  const res = await fetch(`/api/pastes/${id}`, {
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     notFound();
@@ -15,9 +14,8 @@ export default async function PastePage({ params }) {
   const paste = await res.json();
 
   return (
-    <main style={{ padding: "2rem", maxWidth: "800px", margin: "auto" }}>
+    <main style={{ padding: "2rem" }}>
       <h1>Paste</h1>
-
       <pre
         style={{
           background: "#111",
@@ -29,10 +27,6 @@ export default async function PastePage({ params }) {
       >
         {paste.content}
       </pre>
-
-      <p style={{ marginTop: "1rem", color: "#888" }}>
-        Created at: {new Date(paste.created_at).toLocaleString()}
-      </p>
     </main>
   );
 }
