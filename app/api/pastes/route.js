@@ -46,50 +46,6 @@
 //   }
 // }
 
-// import { NextResponse } from "next/server";
-// import {pool} from "@/lib/db";
-// import { v4 as uuidv4 } from "uuid";
-
-// export async function POST(req) {
-//   try {
-//     const { content, expire } = await req.json();
-
-//     if (!content) {
-//       return NextResponse.json(
-//         { error: "Content required" },
-//         { status: 400 }
-//       );
-//     }
-
-//     let expiresAt = null;
-
-//     if (expire) {
-//       const now = new Date();
-
-//       if (expire === "10m") now.setMinutes(now.getMinutes() + 10);
-//       if (expire === "1h") now.setHours(now.getHours() + 1);
-//       if (expire === "1d") now.setDate(now.getDate() + 1);
-
-//       expiresAt = now;
-//     }
-
-//     const id = uuidv4();
-
-//     await pool.query(
-//       `INSERT INTO pastes (id, content, expires_at)
-//        VALUES ($1, $2, $3)`,
-//       [id, content, expiresAt]
-//     );
-
-//     return NextResponse.json({ id }, { status: 201 });
-//   } catch (err) {
-//     console.error(err);
-//     return NextResponse.json(
-//       { error: "Failed to create paste" },
-//       { status: 500 }
-//     );
-//   }
-// }
 
 import { NextResponse } from "next/server";
 import pool from "@/lib/db";
