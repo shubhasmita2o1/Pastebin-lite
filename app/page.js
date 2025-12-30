@@ -600,6 +600,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+<h1>Pastebin lite</h1>
+
 export default function HomePage() {
   const [content, setContent] = useState("");
   const [expire, setExpire] = useState("");
