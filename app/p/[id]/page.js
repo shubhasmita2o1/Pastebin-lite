@@ -17,9 +17,18 @@ export default async function PastePage({ params }) {
 
   return (
     <main style={{ padding: "2rem" }}>
-      <h2>Paste</h2>
-      <pre>{paste.content}</pre>
-      <p>Created at: {new Date(paste.created_at).toLocaleString()}</p>
+      <h1>Paste</h1>
+      <pre
+        style={{
+          background: "#111",
+          color: "#0f0",
+          padding: "1rem",
+          borderRadius: "6px",
+          whiteSpace: "pre-wrap",
+        }}
+      >
+        {paste.content}
+      </pre>
     </main>
   );
 }
