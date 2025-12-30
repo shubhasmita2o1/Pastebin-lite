@@ -602,7 +602,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-<h1>Pastebin lite</h1>
+
 
 export default function HomePage() {
   const [content, setContent] = useState("");
@@ -641,9 +641,9 @@ export default function HomePage() {
         color: "#fff",
       }}
     >
-      <h2 style={{ color: "red", textAlign: "center" }}>
+      {/* <h2 style={{ color: "red", textAlign: "center" }}>
   DEPLOY TEST – SHOULD BE RED
-</h2>
+</h2> */}
 
       <h1 style={{ marginBottom: "1rem" }}>Pastebin Lite</h1>
 
